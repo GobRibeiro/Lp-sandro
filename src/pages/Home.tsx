@@ -5,8 +5,8 @@ import Close from "../assets/close.svg";
 import Instagram from "../assets/instagram.svg"
 import Youtube from "../assets/youtube.svg"
 import Facebook from "../assets/facebook.svg"
-import HeroRectangleOne from "../assets/rectangleOne.svg";
-import HeroRectangleTwo from "../assets/rectangleTwo.svg";
+import HeroRectangleOne from "../assets/RectangleOne.svg";
+import HeroRectangleTwo from "../assets/RectangleTwo.svg";
 import Button from "../components/button.tsx";
 import Star from "../assets/icn bxs-star.svg";
 import StarOuter from "../assets/icn bx-star.svg";
