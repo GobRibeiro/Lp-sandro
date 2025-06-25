@@ -5,8 +5,8 @@ import Close from "../assets/close.svg";
 import Instagram from "../assets/instagram.svg"
 import Youtube from "../assets/youtube.svg"
 import Facebook from "../assets/facebook.svg"
-// import HeroRectangleOne from "../assets/images/rectangleOne.png";
-// import HeroRectangleTwo from "../assets/images/rectangleTwo.png";
+import HeroRectangleOne from "../assets/rectangleOne.svg";
+import HeroRectangleTwo from "../assets/rectangleTwo.svg";
 import Button from "../components/button.tsx";
 import Star from "../assets/icn bxs-star.svg";
 import StarOuter from "../assets/icn bx-star.svg";
@@ -23,7 +23,43 @@ import "../styles/contacts.css";
 import "../styles/footer.css";
 
 export default function Home() {
+    const [email, setEmail] = useState("");
+    const [mensagem, setMensagem] = useState("");
+    const [feedback, setFeedback] = useState("");
     const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(
+                "/api",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiYjc3NGJkODcyOWVhMzhlOWMyZmUwYzY0ZDJjYTk0OGJmNjZmMGYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNjE4MTA0NzA4MDU0LTlyOXMxYzRhbGczNmVybGl1Y2hvOXQ1Mm4zMm42ZGdxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNjE4MTA0NzA4MDU0LTlyOXMxYzRhbGczNmVybGl1Y2hvOXQ1Mm4zMm42ZGdxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA5NTY5NTEyODc5NzY1NzA5Nzc5IiwiZW1haWwiOiJwZWRyb2FiZXJuaXNAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiItTFR6bGx3VGFpTnpvZzlMYTJ5dURRIiwibmJmIjoxNzUwODkwMTQ3LCJpYXQiOjE3NTA4OTA0NDcsImV4cCI6MTc1MDg5NDA0NywianRpIjoiNjcyZTVlNDIzYTU2ZjY0OWZmMGRlZTVmYWE2OTE1OTYyMzY0NTBkZSJ9.zCK9p_ZvsHl-amkhnL3WROrWeAvNLZLzCJ35QYM05YEHsxJ3KlPlkTEOXpXjYKNgHQTdBW8C56e2svXjTiaLUBTXOgOA2GEg_JtSVjghvWOGRbEOnoPjyYR2qp7XssdKbSd5Qb75pV51VlYleyRiRjDIhCQBkNKvIpg0d3IFfv4dJwOWRVQlVzFiOARcYPe9JgRIarTzgVKss8bUV5yNTRhsCYD2GjqZfwBlrg7I_9_kFUwdWCOCsaxe4wQCMjVx7OE18B5sT5Qbi832_W9PAqruj8olrHN8wldz3CxPB4L858jUUeqvKbjieK_97wq_W_tnz-qS4iZJ6ZxW8rmIoA",
+                    },
+                    body: JSON.stringify({
+                        to_email: email,
+                        text_msg: mensagem,
+                    }),
+                }
+            );
+
+            const result = await response.text();
+
+            if (response.ok) {
+                setFeedback("Mensagem enviada com sucesso!");
+                setEmail("");
+                setMensagem("");
+            } else {
+                setFeedback("Erro ao enviar: " + result);
+            }
+        } catch (error) {
+            setFeedback("Erro de rede: " + error);
+        }
+    };
 
     useEffect(() => {
         const html = document.querySelector("html");
@@ -109,9 +145,9 @@ export default function Home() {
             </header>
             <section id="hero">
                 <span className="desktop-only">
-                    {/* <img src={HeroRectangleTwo} alt="Retangulo um tela inicial" /> */}
+                    <img src={HeroRectangleTwo} alt="Retangulo um tela inicial" />
                 </span>
-                {/* <img src={HeroRectangleOne} alt="Retangulo dois tela inicial" /> */}
+                <img src={HeroRectangleOne} alt="Retangulo dois tela inicial" />
 
                 <div className="container content">
                     <p className="desktop-only">
@@ -416,11 +452,24 @@ export default function Home() {
                     <p>Entre em contato, estamos dispostos a tirar qualquer dúvida, seja um orçamento, uma dúvida técnica de algum de nossos produtos. Estamos à disposição para responder.😎</p>
                 </header>
                 <section>
-                    <div className="inputs">
-                        <input type="text" placeholder="Seu Melhor Email" />
-                        <input type="text" placeholder="Motivo do contato. Ex:Gostei muito do produto X, poderia me enviar um orçamento?" />
-                        <Button text="Enviar" />
-                    </div>
+                    <form className="inputs" onSubmit={handleSubmit}>
+                        <input
+                            type="email"
+                            placeholder="Seu e-mail"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Sua mensagem"
+                            required
+                            value={mensagem}
+                            onChange={(e) => setMensagem(e.target.value)}
+                        />
+                        <button type="submit">Enviar</button>
+                        {feedback && <p style={{ marginTop: "1rem" }}>{feedback}</p>}
+                    </form>
                 </section>
             </section>
             <section id="footer">
