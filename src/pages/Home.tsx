@@ -5,8 +5,8 @@ import Close from "../assets/close.svg";
 import Instagram from "../assets/instagram.svg"
 import Youtube from "../assets/youtube.svg"
 import Facebook from "../assets/facebook.svg"
-import HeroRectangleOne from "../assets/images/rectangleOne.png";
-import HeroRectangleTwo from "../assets/images/rectangleTwo.png";
+// import HeroRectangleOne from "../assets/images/rectangleOne.png";
+// import HeroRectangleTwo from "../assets/images/rectangleTwo.png";
 import Button from "../components/button.tsx";
 import Star from "../assets/icn bxs-star.svg";
 import StarOuter from "../assets/icn bx-star.svg";
@@ -109,9 +109,9 @@ export default function Home() {
             </header>
             <section id="hero">
                 <span className="desktop-only">
-                    <img src={HeroRectangleTwo} alt="Retangulo um tela inicial" />
+                    {/* <img src={HeroRectangleTwo} alt="Retangulo um tela inicial" /> */}
                 </span>
-                <img src={HeroRectangleOne} alt="Retangulo dois tela inicial" />
+                {/* <img src={HeroRectangleOne} alt="Retangulo dois tela inicial" /> */}
 
                 <div className="container content">
                     <p className="desktop-only">
