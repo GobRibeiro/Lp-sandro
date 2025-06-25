@@ -38,7 +38,7 @@ export default function Home() {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiYjc3NGJkODcyOWVhMzhlOWMyZmUwYzY0ZDJjYTk0OGJmNjZmMGYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNjE4MTA0NzA4MDU0LTlyOXMxYzRhbGczNmVybGl1Y2hvOXQ1Mm4zMm42ZGdxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNjE4MTA0NzA4MDU0LTlyOXMxYzRhbGczNmVybGl1Y2hvOXQ1Mm4zMm42ZGdxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA5NTY5NTEyODc5NzY1NzA5Nzc5IiwiZW1haWwiOiJwZWRyb2FiZXJuaXNAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiItTFR6bGx3VGFpTnpvZzlMYTJ5dURRIiwibmJmIjoxNzUwODkwMTQ3LCJpYXQiOjE3NTA4OTA0NDcsImV4cCI6MTc1MDg5NDA0NywianRpIjoiNjcyZTVlNDIzYTU2ZjY0OWZmMGRlZTVmYWE2OTE1OTYyMzY0NTBkZSJ9.zCK9p_ZvsHl-amkhnL3WROrWeAvNLZLzCJ35QYM05YEHsxJ3KlPlkTEOXpXjYKNgHQTdBW8C56e2svXjTiaLUBTXOgOA2GEg_JtSVjghvWOGRbEOnoPjyYR2qp7XssdKbSd5Qb75pV51VlYleyRiRjDIhCQBkNKvIpg0d3IFfv4dJwOWRVQlVzFiOARcYPe9JgRIarTzgVKss8bUV5yNTRhsCYD2GjqZfwBlrg7I_9_kFUwdWCOCsaxe4wQCMjVx7OE18B5sT5Qbi832_W9PAqruj8olrHN8wldz3CxPB4L858jUUeqvKbjieK_97wq_W_tnz-qS4iZJ6ZxW8rmIoA",
+                        "Authorization": "Bearer ",
                     },
                     body: JSON.stringify({
                         to_email: email,
@@ -467,7 +467,7 @@ export default function Home() {
                             value={mensagem}
                             onChange={(e) => setMensagem(e.target.value)}
                         />
-                        <button type="submit">Enviar</button>
+                        <Button text="Enviar Mensagem" />
                         {feedback && <p style={{ marginTop: "1rem" }}>{feedback}</p>}
                     </form>
                 </section>
